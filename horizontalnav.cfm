@@ -13,12 +13,15 @@
                <li class="nav-item active">
                     <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
                </li>
+
                <li class="nav-item">
                     <a class="nav-link" href="#">Store Information</a>
                </li>
+
                <li class="nav-item">
                     <a class="nav-link" href="#">Highlighted Favorites</a>
                </li>
+               
                <li class="nav-item">
                     <a class="nav-link" href="#">Events</a>
                </li>

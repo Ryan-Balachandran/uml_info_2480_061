@@ -1,4 +1,4 @@
-<footer id="footer" class="row" style="text-align: center">
+<footer id="footer" class="row">
      <div class="col-12">
           Read Dese Books<br/>
           1 University Way<br/>
