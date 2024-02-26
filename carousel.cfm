@@ -9,7 +9,7 @@
           <div class="carousel-inner">
                <div class="carousel-item active">
                     <img src="images/AOGG.jpg" class="d-block w-100 " alt="..."
-                         style="width:65% !important; margin-left:auto;margin-right:auto">
+                         style="width:65% !important; margin-left:auto; margin-right:auto">
                     <div class="carousel-caption d-none d-md-block">
                          <h5>Anne of Green Gables</h5>
                          <p>A Canadian Treasure</p>
@@ -18,7 +18,7 @@
 
                <div class="carousel-item">
                     <img src="images/AmeliaBedelia.jpg" class="d-block w-100" alt="..."
-                         style="width:65% !important; margin-left:auto;margin-right:auto">
+                         style="width:65% !important; margin-left:auto; margin-right:auto">
                     <div class="carousel-caption d-none d-md-block">
                          <h5>Amelia Bedelia</h5>
                          <p>Meet the most literal person alive.</p>
@@ -27,7 +27,7 @@
 
                <div class="carousel-item">
                     <img src="images/EncyclopediaBrown.jpg" class="d-block w-100" alt="..."
-                         style="width:65% !important; margin-left:auto;margin-right:auto">
+                         style="width:65% !important; margin-left:auto; margin-right:auto">
                     <div class="carousel-caption d-none d-md-block">
                          <h5>Encyclopedia Brown</h5>
                          <p>Boy Detective.</p>
@@ -37,7 +37,7 @@
                <div class="carousel-item">
                     <h3 class="col-lg-offset-2">Store Hours</h3>
                     <table class="table table-hover table-striped"
-                         style="width:65%; margin-left:auto;margin-right:auto">
+                         style="width:65%; margin-left:auto; margin-right:auto">
                          <tbody>
                          <tr>
                               <th>Day</th>
