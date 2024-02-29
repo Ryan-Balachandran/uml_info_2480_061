@@ -1,5 +1,4 @@
 <cftry>
-     <cfdump var="#form#">
      <cfset addEditFunctions = createObject("addEdit")/>
      <cfset addEditFunctions.processForms(form)/>
 
