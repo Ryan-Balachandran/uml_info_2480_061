@@ -34,12 +34,12 @@
                </div>
 
                <div class = "form-floating mb-3">
-                    <input type="number" id="year" name="year" class="form-control" value="" placeholder="Year of Publication"/>
+                    <input type="number" id="year" name="year" class="form-control" value="" placeholder="Please enter the Year of Publication of the book"/>
                     <label for="year">Year of Publication:</label>
                </div>
 
                <div class = "form-floating mb-3">
-                    <input type="number" id="weight" name="weight" step=".1" class="form-control" value="" placeholder="Weight"/>
+                    <input type="number" id="weight" name="weight" step=".1" class="form-control" value="" placeholder="Please enter the weight of the book"/>
                     <label for="weight">Book Weight (oz):</label>
                </div>
 
@@ -54,12 +54,12 @@
                </div>
 
                <div class = "form-floating mb-3">
-                    <input type="text" id="binding" name="binding" class="form-control" value="" placeholder="Binding"/>
+                    <input type="text" id="binding" name="binding" class="form-control" value="" placeholder="Please enter the type of book binding"/>
                     <label for="binding">Book Binding:</label>
                </div>
 
                <div class = "form-floating mb-3">
-                    <input type="text" id="language" name="language" class="form-control" value="" placeholder="Language"/>
+                    <input type="text" id="language" name="language" class="form-control" value="" placeholder="Please enter the language of the book"/>
                     <label for="language">Language:</label>
                </div>
 
@@ -77,9 +77,13 @@
 
      <cfoutput>
           <ul class="nav flex-column">
+               <li class="nav-item">
+                    <a href="#cgi.script_name#?tool=addEdit&book=new" class="nav-link">New Book</a>
+               </li>
+               
                <cfloop query="allbooks">
                     <li class="nav-item">
-                         <a class="nav-link">#trim(title)#</a>
+                         <a class="nav-link" href="#cgi.script_name#?tool=addEdit&book=#isbn13#">#trim(title)#</a>
                     </li>
                </cfloop>
           </ul>
