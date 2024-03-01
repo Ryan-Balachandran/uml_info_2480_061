@@ -85,12 +85,23 @@ component {
 
      function sideNavBooks() {
           try {
-               var qs = new Query(datasource = application.dsource);
+               var qs = new query(datasource = application.dsource);
                qs.setSql('select * from Book_Information');
                return qs.execute().getResult();
           } catch(any err) {
                writeDump(err);
           }
+     }
+
+     function bookDetails(isbn13) {
+          var qs = new query(datasource = application.dsource);
+          qs.setSql('select * from Book_Information where ISBN13 = :isbn13');
+          qs.addparam(
+               name      = 'isbn13',
+               CFSQLTYPE = 'CF_SQL_NVARCHAR',
+               value     = arguments.isbn13
+          );
           
+          return qs.execute().getResult();
      }
 }
