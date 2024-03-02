@@ -6,10 +6,7 @@
 **/
 component {
      function processForms(required struct formData) {
-          if (formData.keyExists('ISBN13') && formData.isbn13.len() == 13 && formData.keyExists('Title') && formData.title.length() > 0) {
-               // writeDump(formData);
-               // writeOutput("insert into Book_Information (ISBN13, Title) values ('#formData.isbn13#', '#formData.title#')");
-
+          if (formData.keyExists('ISBN13') && formData.isbn13.len() == 13 && formData.keyExists('Title') && formData.title.len() > 0) {
                var qs = new query(datasource = application.dsource);
                qs.setSql('IF NOT EXISTS (SELECT * FROM Book_Information WHERE ISBN13 = :isbn13)
                     INSERT INTO Book_Information (ISBN13, Title) VALUES (:isbn13, :title);
@@ -20,7 +17,7 @@ component {
                          ISBN = :isbn,
                          Pages = :pages,
                          Binding = :binding,
-                         Langauge = :language
+                         Language = :language
                     WHERE ISBN13 = :isbn13
                ');
 
@@ -82,20 +79,19 @@ component {
           }
      }
 
-
      function sideNavBooks() {
           try {
                var qs = new query(datasource = application.dsource);
-               qs.setSql('select * from Book_Information');
+               qs.setSql('Select * from Book_Information');
                return qs.execute().getResult();
           } catch(any err) {
                writeDump(err);
           }
      }
 
-     function bookDetails(isbn13) {
+     function bookDetails(required string isbn13) {
           var qs = new query(datasource = application.dsource);
-          qs.setSql('select * from Book_Information where ISBN13 = :isbn13');
+          qs.setSql('select * FROM Book_Information WHERE ISBN13 = :isbn13');
           qs.addparam(
                name      = 'isbn13',
                CFSQLTYPE = 'CF_SQL_NVARCHAR',
