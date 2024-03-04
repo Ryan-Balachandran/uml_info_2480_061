@@ -17,7 +17,8 @@ component {
                          ISBN = :isbn,
                          Pages = :pages,
                          Binding = :binding,
-                         Language = :language
+                         Language = :language,
+                         PublisherID = :publisher
                     WHERE ISBN13 = :isbn13
                ');
 
@@ -75,6 +76,13 @@ component {
                     value     = trim(formData.language)
                );
 
+               qs.addParam(
+                    name      = 'publisher',
+                    CFSQLTYPE = 'CF_SQL_NVARCHAR',
+                    value     = trim(formData.publisher),
+                    nullValue = trim(formData.publisher).len() != 35
+               );
+
                qs.execute();
           }
      }
@@ -99,5 +107,11 @@ component {
           );
           
           return qs.execute().getResult();
+     }
+
+     function allPublishers(isbn13) {
+          var qs = new query(datasource = application.dsource);
+          qs.setSql('select * from publishers order by name');
+          return qs.execute().getResult(); 
      }
 }
