@@ -7,6 +7,11 @@
 component {
      function processForms(required struct formData) {
           if (formData.keyExists('ISBN13') && formData.isbn13.len() == 13 && formData.keyExists('Title') && formData.title.len() > 0) {
+               if (formData.keyExists("uploadImage") && formData.uploadImage.len() > 0) {
+                    // formData.image = uploadBookCover();
+                    arguments.formData.image = uploadBookCover();
+               }
+
                var qs = new query(datasource = application.dsource);
                qs.setSql('IF NOT EXISTS (SELECT * FROM Book_Information WHERE ISBN13 = :isbn13)
                     INSERT INTO Book_Information (ISBN13, Title) VALUES (:isbn13, :title);
@@ -18,7 +23,8 @@ component {
                          Pages = :pages,
                          Binding = :binding,
                          Language = :language,
-                         PublisherID = :publisher
+                         PublisherID = :publisher,
+                         image = :image
                     WHERE ISBN13 = :isbn13
                ');
 
@@ -83,6 +89,13 @@ component {
                     nullValue = trim(formData.publisher).len() != 35
                );
 
+               qs.addParam(
+                    name      = 'image',
+                    CFSQLTYPE = 'CF_SQL_NVARCHAR',
+                    value     = trim(formData.image),
+                    nullValue = trim(formData.image).len() == 0
+               );
+
                qs.execute();
           }
      }
@@ -113,5 +126,10 @@ component {
           var qs = new query(datasource = application.dsource);
           qs.setSql('select * from publishers order by name');
           return qs.execute().getResult(); 
+     }
+
+     function uploadBookCover() {
+          var imageData = fileUpload(expandPath("../images/"), "uploadImage", "*", "makeUnique");
+          return imageData.serverFile;
      }
 }
