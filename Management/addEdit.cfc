@@ -24,7 +24,8 @@ component {
                          Binding = :binding,
                          Language = :language,
                          PublisherID = :publisher,
-                         image = :image
+                         image = :image,
+                         Description = :description
                     WHERE ISBN13 = :isbn13
                ');
 
@@ -92,8 +93,15 @@ component {
                qs.addParam(
                     name      = 'image',
                     CFSQLTYPE = 'CF_SQL_NVARCHAR',
-                    value     = trim(formData.image),
-                    nullValue = trim(formData.image).len() == 0
+                    value     = trim(formData.uploadImage),
+                    nullValue = trim(formData.uploadImage).len() == 0
+               );
+
+               qs.addParam(
+                    name      = 'description',
+                    CFSQLTYPE = 'CF_SQL_NVARCHAR',
+                    value     = trim(formData.description),
+                    nullValue = trim(formData.description).len() == 0
                );
 
                qs.execute();

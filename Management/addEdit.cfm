@@ -103,6 +103,21 @@
                     </div>
                </div>
 
+               <div class="form-floating mb-3">
+                    <div>
+                         <label for="description">Description</label>
+                    </div>
+
+                    <textarea id="description" name="description">
+                         <cfoutput>#thisBookDetails.description[1]#</cfoutput>
+                    </textarea>
+                    <script>
+                         ClassicEditor
+                              .create(document.querySelector('##description'))
+                              .catch(error => {console.dir(error)});
+                    </script>
+               </div>
+
                <button type="submit" class="btn btn-primary" style="width: 100%; margin: 10px 0 10px 0">Add Book</button>
           </form>
      </cfoutput>
