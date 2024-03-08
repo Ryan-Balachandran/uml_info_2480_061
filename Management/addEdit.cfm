@@ -1,5 +1,6 @@
 <cftry>
      <cfparam name="book" default=""/>
+     <cfparam name="qterm" default=""/>
 
      <cfset addEditFunctions = createObject("addEdit")/>
      <cfset addEditFunctions.processForms(form)/>
@@ -35,7 +36,7 @@
      <cfset allPublishers = addEditFunctions.allPublishers()/>
 
      <cfoutput>
-          <form action="#cgi.script_name#?tool=addEdit&book=#book#" method="post" enctype="multipart/form-data">
+          <form action="#cgi.script_name#?tool=addEdit&qterm=#qterm#" method="post" enctype="multipart/form-data">
                <div class="form-floating mb-3">
                     <input type="text" id="isbn13" name="isbn13" class="form-control" value="#thisBookDetails.isbn13[1]#" placeholder="Please enter the ISBN-13 of the book"/>
                     <label for="isbn13">ISBN 13:</label>
@@ -125,23 +126,42 @@
 
 
 <cffunction name="sideNav">
-     <cfset allbooks=addEditFunctions.sideNavBooks()/>
+     <cfset allbooks = addEditFunctions.sideNavBooks(qterm)/>
 
      <div>
           Book List
      </div>
 
      <cfoutput>
+          #findBookForm()#
           <ul class="nav flex-column">
                <li class="nav-item">
                     <a href="#cgi.script_name#?tool=addEdit&book=new" class="nav-link">Add A New Book</a>
                </li>
-               
-               <cfloop query="allbooks">
-                    <li class="nav-item">
-                         <a class="nav-link" href="#cgi.script_name#?tool=addEdit&book=#isbn13#">#title#</a>
-                    </li>
-               </cfloop>
+
+               <cfif qterm.len() == 0>
+                    No Search Term Entered
+               <cfelseif allbooks.recordcount == 0>
+                    No Results Found
+               <cfelse>
+                    <cfloop query="allbooks">
+                         <li class="nav-item">
+                              <a class="nav-link" href="#cgi.script_name#?tool=addEdit&book=#isbn13#&qterm=#qterm#">#title#</a>
+                              
+                         </li>
+                    </cfloop>
+               </cfif>
           </ul>
+     </cfoutput>
+</cffunction>
+
+<cffunction name="findBookForm">
+     <cfoutput>
+          <form action="#cgi.script_name#?tool=#tool#" method="post">
+               <div class="form-floating mb-3">
+                    <input type="text" id="qterm" name="qterm" class="form-control" value="#qterm#" placeholder="Enter a search term to find a book to edit"/>
+                    <label for="qterm">Search Inventory</label>
+               </div>
+          </form>
      </cfoutput>
 </cffunction>

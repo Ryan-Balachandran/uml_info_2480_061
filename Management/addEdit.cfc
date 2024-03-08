@@ -104,17 +104,24 @@ component {
                     nullValue = trim(formData.description).len() == 0
                );
 
+
+
                qs.execute();
           }
      }
 
-     function sideNavBooks() {
-          try {
+     function sideNavBooks(qterm) {
+          if (qterm.len() == 0) {
+               return queryNew("title");
+          }
+          else {
                var qs = new query(datasource = application.dsource);
-               qs.setSql('Select * from Book_Information');
+               qs.setSql('select * from Book_Information where title like :qterm order by title');
+               qs.addparam(
+                    name  = 'qterm', 
+                    value = '%#qterm#%'
+               );
                return qs.execute().getResult();
-          } catch(any err) {
-               writeDump(err);
           }
      }
 
