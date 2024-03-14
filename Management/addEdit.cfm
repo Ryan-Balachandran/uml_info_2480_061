@@ -147,7 +147,6 @@
                     <cfloop query="allbooks">
                          <li class="nav-item">
                               <a class="nav-link" href="#cgi.script_name#?tool=addEdit&book=#isbn13#&qterm=#qterm#">#title#</a>
-                              
                          </li>
                     </cfloop>
                </cfif>
