@@ -2,12 +2,10 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>Title</title>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
-            integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+        <title>Home</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
         <link href="../includes/css/class.css" rel="stylesheet"/>
         <link href="../includes/css/mycss.css" rel="stylesheet"/>
-        <!--- <link href="styles.css" rel="stylesheet"/> --->
     </head>
 
     <style>
@@ -18,16 +16,13 @@
         header{
             font-size: 2em;
         }
-
-        /* .carousel-item{
-            width: 65% !important;
-            margin-left: auto;
-            margin-right: auto;
-        } */
-        /* style="width:65% !important; margin-left:auto;margin-right:auto" */
     </style>
 
     <body>
+        <cfparam name="p" default="carousel"/>
+        <cfparam name="searchme" default="">
+        <cfset bookstoreFunctions = createObject("bookstore")/>
+
         <div id="wrapper" class="container">
             <cfinclude template="header.cfm"/>
 
@@ -36,7 +31,7 @@
             </div>
 
             <div id="maincontent" class="row">
-                <cfinclude template="carousel.cfm"/>
+                <cfinclude template="#p#.cfm"/>
                 <cfinclude template="genrenav.cfm"/>
             </div>
 
