@@ -8,7 +8,6 @@ component {
      function processForms(required struct formData) {
           if (formData.keyExists('ISBN13') && formData.isbn13.len() == 13 && formData.keyExists('Title') && formData.title.len() > 0) {
                if (formData.keyExists("uploadImage") && formData.uploadImage.len() > 0) {
-                    // formData.image = uploadBookCover();
                     arguments.formData.image = uploadBookCover();
                }
 
@@ -53,7 +52,7 @@ component {
                qs.addParam(
                     name      = 'weight',
                     CFSQLTYPE = 'CF_SQL_INTEGER',
-                    value     = trim(formData.weight),
+                    value     = formData.weight,
                     nullValue = !isValid('numeric', formData.weight)
                );
 
@@ -93,8 +92,8 @@ component {
                qs.addParam(
                     name      = 'image',
                     CFSQLTYPE = 'CF_SQL_NVARCHAR',
-                    value     = trim(formData.uploadImage),
-                    nullValue = trim(formData.uploadImage).len() == 0
+                    value     = trim(formData.image),
+                    nullValue = trim(formData.image).len() == 0
                );
 
                qs.addParam(
@@ -103,9 +102,7 @@ component {
                     value     = trim(formData.description),
                     nullValue = trim(formData.description).len() == 0
                );
-
-
-
+               
                qs.execute();
           }
      }
@@ -116,11 +113,12 @@ component {
           }
           else {
                var qs = new query(datasource = application.dsource);
-               qs.setSql('select * from Book_Information where title like :qterm order by title');
+               qs.setSql('select * FROM Book_Information WHERE Title LIKE :qterm order by Title');
                qs.addparam(
                     name  = 'qterm', 
                     value = '%#qterm#%'
                );
+
                return qs.execute().getResult();
           }
      }
@@ -139,7 +137,7 @@ component {
 
      function allPublishers(isbn13) {
           var qs = new query(datasource = application.dsource);
-          qs.setSql('select * from publishers order by name');
+          qs.setSql('select * FROM publishers order by name');
           return qs.execute().getResult(); 
      }
 

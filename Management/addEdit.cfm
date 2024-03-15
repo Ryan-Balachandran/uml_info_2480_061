@@ -12,10 +12,6 @@
                <cfelse>
                     <cfoutput>Please select a book from the list to edit</cfoutput>
                </cfif>
-
-               <!--- <cfif book.len() gt 0>
-                    <cfoutput>#mainForm()#</cfoutput>
-               </cfif> ---> 
           </div>
 
           <div id="leftgutter" class="col-lg-3 order-first">
@@ -92,14 +88,13 @@
                          <label for="uploadImage">Upload Cover</label>
                          <div class="input-group mb-3">
                               <input type="file" id="uploadImage" name="uploadImage" class="form-control"/>
-                              <input type="hidden" name="name" value "#trim(thisBookDetails.image[1])#"/>
+                              <input type="hidden" name="image" value "#trim(thisBookDetails.image[1])#"/>
                          </div>
                     </div>
 
                     <div class="col">
                          <cfif thisBookDetails.image[1].len() gt 0> 
                               <img src="../images/#trim(thisBookDetails.image[1])#" style="width:200px"/>
-                              <br/>
                          </cfif>
                     </div>
                </div>
