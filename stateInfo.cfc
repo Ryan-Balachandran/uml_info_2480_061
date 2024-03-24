@@ -13,7 +13,7 @@ component {
           acctNumber = ""
      ) {
           return {
-               isLoggedIn = arguments.isLoggedIn,
+               isLoggedIn : arguments.isLoggedIn,
                firstname  : arguments.firstname,
                lastname   : arguments.lastname,
                email      : arguments.email,
@@ -23,7 +23,7 @@ component {
 
      function emailisUnique(required string email) {
           var qs = new query(datasource = application.dsource);
-          qs.setSql("Select * from People where email = :email");
+          qs.setSql("Select * FROM People WHERE Email = :email");
           qs.addparam(
                name  = "email",
                value = arguments.email
@@ -33,33 +33,32 @@ component {
      }
 
      function processNewAccount(formData) {
+          var result = {
+               success: false,
+               message: ""
+          }
+
           if (emailisUnique(formData.email)) {
-               var newid = createuuids();
+               var newid = createuuid();
 
                if(addPassword(newid, formData.password)) {
-                    addAccount(newid, formData.title, formData.firstname, formData.lastname, formData.email, formData.isAdmin);
-                    return {
-                         success: true,
-                         message: "Account Made. Go Login!"
-                    }
+                    addAccount(newid, formData.title, formData.firstname, formData.lastname, formData.email);
+                    result.success = true;
+                    result.message = "Account Made. Go Login!";
                } else {
-                    return {
-                         success: false,
-                         message: "We encountered a problem! Please resubmit"
-                    }
+                    result.message = "We encountered a problem! Please resubmit";
                }
           } else {
-               return {
-                    success: false,
-                    message: "That email is already in our system. Please login."
-               }
+               result.message = "That email is already in our system. Please login.";
           }
+          return result;
      }
 
      function addPassword(id, password) {
           try {
                var qs = new query(datasource = application.dsource);
-               qs.setSql("Insert INTO Passwords (personid, password) VALUES (:personid, :password)");
+               qs.setSql("Insert INTO Passwords (personid, password) 
+                         VALUES (:personid, :password)");
                qs.addparam(
                     name  = "personid",
                     value = arguments.id
@@ -78,15 +77,15 @@ component {
      }
 
      function addAccount(
-          required string id,
-                   string title,
-          required string firstname,
+          required string id, 
+                   string title, 
+          required string firstname, 
           required string lastname, 
           required string email, 
-          numberic isAdmin = 0
+                   numeric isAdmin = 0
      ) {
           var qs = new query(datasource = application.dsource);
-          qs.setSql("Insert INTO People (personID, Title, Firstname, Lastname, Email, isAdmin) 
+          qs.setSql("Insert INTO People (personID, Title, [First Name], [Last Name], Email, isAdmin) 
                     VALUES (:personid, :title, :firstname, :lastname, :email, :isAdmin)");
           qs.addparam(
                name  = "personid",
@@ -118,5 +117,14 @@ component {
                value = arguments.isAdmin
           );
           qs.execute();
+     }
+
+     function logMeIn(username, password) {
+          var qs = new query(datasource = application.dsource);
+          qs.setSql("
+               Select * FROM People
+               INNER JOIN Passwords ON People.personID = Passwords.personid
+               WHERE Email = :email AND password = :password"
+          );
      }
 }
