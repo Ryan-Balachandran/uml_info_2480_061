@@ -14,26 +14,40 @@
 
 
 <cffunction name="noResults">
-     There were no results to be found. Please try again.
+     <div style="font-size: 2em;">
+          There were no results to be found. Please try again.
+     </div>
 </cffunction>
 
 <cffunction name="oneResult">
      <cfoutput>
+          <div style="color: green; font-size: 2em;">
+               Search Results:
+          </div>
+
           <div class="row">
-               <img src="images/#bookInfo.image[1]#" style="float: left; width:250px; height:250px"/>
+               <div class="col">
+                    <img src="images/#bookInfo.image[1]#" style="float: left; width: 250px; height: auto"/>
+               </div>
+
                <div class="col">
                     <span>Title: #bookInfo.title[1]#</span><br/>
                     <span>ISBN-13: #bookInfo.isbn13[1]#</span><br/>
                     <span>Publisher: #bookInfo.name[1]#</span><br/>
                     <span>Year: #bookInfo.year[1]#</span><br/>
-                    <span>Pages: #bookInfo.pages[1]#</span>
+                    <span>Pages: #bookInfo.pages[1]#</span><br/>
+                    <span>Binding: #bookInfo.binding[1]#</span><br/>
+                    <span>Language: #bookInfo.language[1]#</span><br/>
+                    <span>Description: #bookInfo.description[1]#</span>
                </div>
           </div>
      </cfoutput>
 </cffunction>
 
 <cffunction name="manyResults">
-     There were more than one result, here is the list.
+     <div style="font-size: 2em;">
+          There were more than one result, here is the list.
+     </div>
 
      <ol class="nav flex-column">
           <cfoutput query = "bookInfo">
