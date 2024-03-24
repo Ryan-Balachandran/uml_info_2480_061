@@ -9,9 +9,8 @@ component {
           var qs = new query(datasource = application.dsource);
           qs.setSql("select * FROM Book_Information 
                INNER JOIN Publishers on Book_Information.PublisherID = Publishers.PublisherID
-               WHERE Title LIKE '%#trim(form.searchme)#%' or isbn13 like '%#trim(searchme)#%';
+               WHERE Title LIKE '%#searchme#%' or ISBN13 LIKE '#searchme#%';
           ");
-          // isbn13='#searchme#'
 
           qs.addParam(
                name      = 'searchme', 
@@ -20,7 +19,7 @@ component {
 
           qs.addParam(
                name      = 'isbn13', 
-               value     = '#searchme#'
+               value     = '#searchme#%'
           );
           
           return qs.execute().getResult();
