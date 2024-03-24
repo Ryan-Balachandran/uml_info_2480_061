@@ -34,12 +34,31 @@
                </form>
           </cfoutput>
 
-          <cfoutput>
+          <!--- <cfoutput>
                <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
                          <a class="nav-link" href="#cgi.script_name#?p=login">Login</a>
                     </li>
                </ul>
+          </cfoutput> --->
+
+          <cfoutput>
+               <cfif session.user.isLoggedIn>
+                    <ul class="navbar-nav mr-auto">
+                         <li>
+                              <a>Welcome #session.user.firstname#</a>
+                         </li class="nav-item">
+                         <li>
+                              <a class="nav-link" href="#cgi.script_name#?p=logoff ">logout</a>
+                         </li>
+                    </ul>
+               <cfelse>
+                    <ul class="navbar-nav mr-auto">
+                         <li class="nav-item">
+                              <a class="nav-link" href="#cgi.script_name#?p=login">Login</a>
+                         </li>
+                    </ul>
+               </cfif>
           </cfoutput>
      </div>
 </nav>
