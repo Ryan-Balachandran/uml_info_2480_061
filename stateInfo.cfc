@@ -126,5 +126,15 @@ component {
                INNER JOIN Passwords ON People.personID = Passwords.personid
                WHERE Email = :email AND password = :password"
           );
+          qs.addparam(
+               name  = "email",
+               value = arguments.username
+          );
+
+          qs.addparam(
+               name  = "password",
+               value = hash(form.loginpassword,"SHA-256")
+          );
+          return qs.execute().getResult();
      }
 }
