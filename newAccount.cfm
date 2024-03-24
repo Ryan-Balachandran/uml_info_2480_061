@@ -1,5 +1,4 @@
 <cfparam name = "AccountMessage" default = ""/>
-<cfset AccountMessage = newAccountResult.message/>
 
 <script type="text/javascript">
      function validateNewAccount() {
@@ -11,7 +10,7 @@
                document.getElementById('submitNewAccountForm').click();
                document.getElementById('AccountMessage').innerHTML = "";
           } else {
-               document.getElementById('AccountMessage').innerHTML = "Please make sure that you entered your password correctly";
+               document.getElementById('AccountMessage').innerHTML = "Please make sure that you have entered your password correctly";
           }
      }
 </script>
@@ -56,20 +55,7 @@
           </div>  
      </form>
 
-     <div id="AccountMessage" style="color: red; font-size: 1.5em;">
+     <div id="AccountMessage" style="font-size: 1.5em;">
           <cfoutput>#AccountMessage#</cfoutput>
      </div>
 </cfoutput>
-
-<!--- 
-a) Make all fields required
-
-b) Make the input for the email type=ˮemailˮ. 
-This will force the user to at least enter something with an @ in it.
-
-c) Make the password and confirmPassword inputs are type=”password”. 
-This will display the text in the inputs as dots instead of text and make it harder for someone to get a password over someoneʼs shoulder.
-
-d) In order to make sure that the user has correctly entered their password, 
-letʼs set it up so that they canʼt submit the forms unless the password and the confirm password inputs match 
- --->
