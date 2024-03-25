@@ -22,9 +22,9 @@
     <body>
         <cfparam name = "p" default = "carousel"/>
         <cfset bookstoreFunctions = createObject("bookstore")/>
-        <cfinclude template = "stateInfo.cfm"/>
 
         <div id="wrapper" class="container">
+            <cfinclude template = "stateInfo.cfm"/>
             <cfinclude template = "header.cfm"/>
 
             <div id="horizontalnav" class="row">
