@@ -82,7 +82,7 @@ component {
           required string firstname, 
           required string lastname, 
           required string email, 
-                   numeric isAdmin = 0
+                  numeric isAdmin = 0
      ) {
           var qs = new query(datasource = application.dsource);
           qs.setSql("Insert INTO People (personID, Title, [First Name], [Last Name], Email, isAdmin) 
