@@ -21,11 +21,11 @@
      <cfelse>
           <cfset loginMessage = "That login did not work."/>
      </cfif>
-</cfif>
 
-<cfif url.keyExists("p") && url.p == 'logoff'>
-     <cfset session.user = stateFunctions.obtainerUser()/>
-     <cfset p = "carousel"/>
+     <cfif url.keyExists("p") && url.p == 'logoff'>
+          <cfset session.user = stateFunctions.obtainerUser()/>
+          <cfset p = "carousel"/>
+     </cfif>
 </cfif>
 
 <cfif form.keyExists('firstname')>
