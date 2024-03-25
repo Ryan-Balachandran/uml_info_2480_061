@@ -85,7 +85,7 @@ component {
                   numeric isAdmin = 0
      ) {
           var qs = new query(datasource = application.dsource);
-          qs.setSql("Insert INTO People (personID, Title, [First Name], [Last Name], Email, isAdmin) 
+          qs.setSql("Insert INTO People (personID, Title, Firstname, Lastname, Email, isAdmin) 
                     VALUES (:personid, :title, :firstname, :lastname, :email, :isAdmin)");
           qs.addparam(
                name  = "personid",
@@ -123,7 +123,7 @@ component {
           var qs = new query(datasource = application.dsource);
           qs.setSql("
                Select * FROM People
-               INNER JOIN Passwords ON People.personID = Passwords.personid
+               INNER JOIN Passwords ON People.PersonID = Passwords.personid
                WHERE Email = :email AND password = :password"
           );
           qs.addparam(
