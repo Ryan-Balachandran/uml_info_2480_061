@@ -30,7 +30,7 @@
                     <img src="images/#bookInfo.image[1]#" style="float: left; width: 250px; height: auto"/>
                </div>
 
-               <div class="col">
+               <div class="col" style="font-size: 1.4em;">
                     <span>Title: #bookInfo.title[1]#</span><br/>
                     <span>ISBN-13: #bookInfo.isbn13[1]#</span><br/>
                     <span>Publisher: #bookInfo.name[1]#</span><br/>
