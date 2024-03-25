@@ -14,8 +14,8 @@
                <label for="loginpassword">Password</label>
           </div>
           
-          <button id="newAccountButton" class="btn btn-warning" type="button" onclick="validateNewAccount()">Make Account</button>     
-          <input type="submit" id="submitNewAccountForm" style="display: none"/>     
+          <button id="login" class="btn btn-warning" type="button">Login</button>     
+          <input type="submit" id="login" style="display: none"/>     
      </form>
 
      <div id="LoginMessage" style="font-size: 1.5em;">
