@@ -37,11 +37,12 @@
           <cfoutput>
                <cfif session.user.isLoggedIn>
                     <ul class="navbar-nav mr-auto">
-                         <li>
-                              <a>Welcome #session.user.firstname#</a>
-                         </li class="nav-item">
-                         <li>
-                              <a class="nav-link" href="#cgi.script_name#?p=logoff">logout</a>
+                         <li class="nav-item">
+                              <span class="nav-link">Welcome #session.user.firstname#</span>
+                         </li>
+
+                         <li class="nav-item">
+                              <a class="nav-link" href="#cgi.script_name#?p=logoff">Logout</a>
                          </li>
                     </ul>
                <cfelse>
@@ -55,7 +56,7 @@
                <cfif session.user.isAdmin>
                     <ul class="navbar-nav mr-auto">
                          <li class="nav-item">
-                              <a class="nav-link" href="#cgi.script_name#?p=Management/index">Management</a>
+                              <a class="nav-link" href="Management/index.cfm">Management</a>
                          </li>
                     </ul>
                </cfif>
