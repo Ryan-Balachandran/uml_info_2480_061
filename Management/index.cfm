@@ -11,10 +11,16 @@
      <body>
           <cfparam name = "tool" default = "addEdit"/>
 
+          <cfif session.user.isAdmin != 1>
+               <cflocation url = "../"/>
+          </cfif>
+
           <div class = "container">
                <div id = "navarea">
                     <cfoutput>
-                         <a href = "#cgi.script_name#/?tool=addEdit">Book Inventory</a>
+                         <a href = "../index.cfm">Home</a> |
+                         <a href = "#cgi.script_name#/?tool=addEdit">Book Inventory</a> |
+                         <!--- CREATE PUBLISHERS FORM TO ADD PUBLISHERS? --->
                          <a href = "#cgi.script_name#/?tool=createuuids">Create UUIDs</a>
                     </cfoutput>
                </div>
