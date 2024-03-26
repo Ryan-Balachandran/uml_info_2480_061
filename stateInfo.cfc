@@ -10,14 +10,16 @@ component {
           firstname  = "",
           lastname   = "",
           email      = "",
-          acctNumber = ""
+          acctNumber = "",
+          isAdmin    = 0
      ) {
           return {
                isLoggedIn : arguments.isLoggedIn,
                firstname  : arguments.firstname,
                lastname   : arguments.lastname,
                email      : arguments.email,
-               acctNumber : arguments.acctNumber
+               acctNumber : arguments.acctNumber,
+               isAdmin    : arguments.isAdmin
           };
      }
 
