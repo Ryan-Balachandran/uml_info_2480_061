@@ -14,11 +14,10 @@
                <label for="loginpassword">Password</label>
           </div>
           
-          <button id="login" class="btn btn-warning" type="button">Login</button>     
-          <input type="submit" id="login" style="display: none"/>     
+          <div class="form-floating mb-3">
+               <input type="submit" class="btn btn-primary" value="login" style="width: 100%"/>
+          </div>
      </form>
 
-     <div id="LoginMessage" style="font-size: 1.5em;">
-          <cfoutput>#LoginMessage#</cfoutput>
-     </div>
+     <div id="LoginMessage" style="font-size: 1.5em;">#LoginMessage#</div>
 </cfoutput>
