@@ -26,6 +26,7 @@ component {
      function emailisUnique(required string email) {
           var qs = new query(datasource = application.dsource);
           qs.setSql("Select * FROM People WHERE Email = :email");
+
           qs.addparam(
                name  = "email",
                value = arguments.email
@@ -59,8 +60,8 @@ component {
      function addPassword(id, password) {
           try {
                var qs = new query(datasource = application.dsource);
-               qs.setSql("Insert INTO Passwords (personid, password) 
-                         VALUES (:personid, :password)");
+               qs.setSql("Insert INTO Passwords (personid, password) VALUES (:personid, :password)");
+
                qs.addparam(
                     name  = "personid",
                     value = arguments.id
@@ -88,7 +89,9 @@ component {
      ) {
           var qs = new query(datasource = application.dsource);
           qs.setSql("Insert INTO People (personID, Title, Firstname, Lastname, Email, isAdmin) 
-                    VALUES (:personid, :title, :firstname, :lastname, :email, :isAdmin)");
+               VALUES (:personid, :title, :firstname, :lastname, :email, :isAdmin)"
+          );
+
           qs.addparam(
                name  = "personid",
                value = arguments.id
@@ -123,11 +126,11 @@ component {
 
      function logMeIn(username, password) {
           var qs = new query(datasource = application.dsource);
-          qs.setSql("
-               Select * FROM People
+          qs.setSql("Select * FROM People
                INNER JOIN Passwords ON People.PersonID = Passwords.personid
                WHERE Email = :email AND password = :password"
           );
+          
           qs.addparam(
                name  = "email",
                value = arguments.username
