@@ -53,13 +53,13 @@
                     </ul>
                </cfif>
 
-               <cfif session.user.isAdmin>
+               <!--- <cfif session.user.isAdmin> --->
                     <ul class="navbar-nav mr-auto">
                          <li class="nav-item">
                               <a class="nav-link" href="Management/index.cfm">Management</a>
                          </li>
                     </ul>
-               </cfif>
+               <!--- </cfif> --->
           </cfoutput>
      </div>
 </nav>
