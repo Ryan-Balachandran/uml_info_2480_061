@@ -104,6 +104,14 @@ component {
                );
                
                qs.execute();
+
+               if (formData.keyExists("genre")) {
+                    deleteAllBookGenres(formData.isbn13);
+
+                    formData.genre.listToArray().each(function(item){
+                         insertGenre(item, formData.isbn13);
+                    });
+               }
           }
      }
 
@@ -113,7 +121,8 @@ component {
           }
           else {
                var qs = new query(datasource = application.dsource);
-               qs.setSql('select * FROM Book_Information WHERE Title LIKE :qterm order by Title');
+               qs.setSql('Select * FROM Book_Information WHERE Title LIKE :qterm order by Title');
+
                qs.addparam(
                     name  = 'qterm', 
                     value = '%#qterm#%'
@@ -125,24 +134,73 @@ component {
 
      function bookDetails(required string isbn13) {
           var qs = new query(datasource = application.dsource);
-          qs.setSql('select * FROM Book_Information WHERE ISBN13 = :isbn13');
+          qs.setSql('Select * FROM Book_Information WHERE ISBN13 = :isbn13');
+
           qs.addparam(
                name      = 'isbn13',
                CFSQLTYPE = 'CF_SQL_NVARCHAR',
                value     = arguments.isbn13
           );
-          
+
           return qs.execute().getResult();
      }
 
      function allPublishers(isbn13) {
           var qs = new query(datasource = application.dsource);
-          qs.setSql('select * FROM publishers order by name');
+          qs.setSql('Select * FROM publishers order by name');
           return qs.execute().getResult(); 
      }
 
      function uploadBookCover() {
           var imageData = fileUpload(expandPath("../images/"), "uploadImage", "*", "makeUnique");
           return imageData.serverFile;
+     }
+
+     function allGenres() {
+          var qs = new query(datasource = application.dsource);
+          qs.setSql('Select * FROM Genre order by genreName');
+          return qs.execute().getResult(); 
+     }
+
+     // Accepts the genre ID and book ID and inserts them into the genresToBooks table
+     function insertGenre(genreID, isbn13) {
+          var qs = new query(datasource = application.dsource);
+          qs.setSql('Insert INTO genresToBooks (genreID, isbn13) VALUES (:genreid, :isbn13)');
+
+          qs.addparam(
+               name  = 'genreid',
+               value = arguments.genreID
+          );
+
+          qs.addparam(
+               name  = 'isbn13',
+               value = arguments.isbn13
+          );
+
+          qs.execute();
+     }
+
+     function deleteAllBookGenres(isbn13) {
+          var qs = new query(datasource = application.dsource);
+          qs.setSql('Delete FROM GenresToBooks WHERE ISBN13 = :isbn13');
+
+          qs.addparam(
+               name  = 'isbn13',
+               value = arguments.isbn13
+          );
+
+          qs.execute();
+     }
+
+     function bookGenres(isbn13) {
+          var qs = new query(datasource = application.dsource);
+          qs.setSql('Select * FROM genresToBooks WHERE ISBN13 = :isbn13');
+
+          qs.addparam(
+               name  = 'isbn13',
+               value = arguments.isbn13
+          );
+
+          return qs.execute().getResult(); 
      }
 }
