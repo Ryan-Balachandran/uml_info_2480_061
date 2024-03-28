@@ -71,6 +71,7 @@ component {
                     name  = "password",
                     value = hash(arguments.password, "SHA-256")
                );
+
                qs.execute();
                return true;
           }
@@ -121,6 +122,7 @@ component {
                name  = "isAdmin",
                value = arguments.isAdmin
           );
+
           qs.execute();
      }
 
@@ -140,6 +142,7 @@ component {
                name  = "password",
                value = hash(form.loginpassword,"SHA-256")
           );
+          
           return qs.execute().getResult();
      }
 }
