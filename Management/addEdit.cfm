@@ -1,6 +1,6 @@
 <cftry>
-     <cfparam name="book" default=""/>
-     <cfparam name="qterm" default=""/>
+     <cfparam name = "book" default = ""/>
+     <cfparam name =" qterm" default = ""/>
 
      <cfset addEditFunctions = createObject("addEdit")/>
      <cfset addEditFunctions.processForms(form)/>
@@ -30,6 +30,8 @@
 <cffunction name="mainForm">
      <cfset thisBookDetails = addEditFunctions.bookDetails(book)/>
      <cfset allPublishers = addEditFunctions.allPublishers()/>
+     <cfset allGenres = addEditFunctions.allGenres()/>
+     <cfset allGenresForThisBook = addEditFunctions.bookGenres(book)/>
 
      <cfoutput>
           <form action="#cgi.script_name#?tool=addEdit&qterm=#qterm#" method="post" enctype="multipart/form-data">
@@ -94,15 +96,13 @@
 
                     <div class="col">
                          <cfif thisBookDetails.image[1].len() gt 0> 
-                              <img src="../images/#trim(thisBookDetails.image[1])#" style="width:200px"/>
+                              <img src="../images/#trim(thisBookDetails.image[1])#" style="width: 200px"/>
                          </cfif>
                     </div>
                </div>
 
                <div class="form-floating mb-3">
-                    <div>
-                         <label for="description">Description</label>
-                    </div>
+                    <div><label for="description">Description</label></div>
 
                     <textarea id="description" name="description">
                          <cfoutput>#thisBookDetails.description[1]#</cfoutput>
@@ -114,6 +114,22 @@
                     </script>
                </div>
 
+               <div>
+                    <h3>Genres</h3>
+                    <cfloop query="allGenres">
+                         <div class="form-check mb3">
+                              <input class="form-check-input" id="genre#genreID#" type="checkbox" name="genre" value="#genreID#"/>
+                              <label class="form-check-label" for="genre#genreID#">#genreName#</label>
+                         </div>
+                    </cfloop>
+
+                    <cfloop query="allGenresForThisBook">
+                         <script type="text/javascript">
+                              document.getElementById('genre#genreid#').checked = true;
+                         </script>
+                    </cfloop>
+               </div>
+
                <button type="submit" class="btn btn-primary" style="width: 100%; margin: 10px 0 10px 0">Add Book</button>
           </form>
      </cfoutput>
@@ -123,7 +139,7 @@
 <cffunction name="sideNav">
      <cfset allbooks = addEditFunctions.sideNavBooks(qterm)/>
 
-     <div>
+     <div style="padding-top: 10px;">
           Book List
      </div>
 
