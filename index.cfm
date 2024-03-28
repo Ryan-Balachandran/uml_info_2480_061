@@ -36,7 +36,6 @@
                     <cfinclude template = "#p#.cfm"/>
                 </section>
                 <section id="left" class="col-sm-3 order-first">
-                    <h3>Search By Genre</h3>
                     <cfinclude template = "genrenav.cfm"/>
                </section>
             </div>
