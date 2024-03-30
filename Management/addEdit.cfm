@@ -10,6 +10,7 @@
                <cfif book neq "">
                     <cfoutput>#mainForm()#</cfoutput>
                <cfelse>
+                    <!--- Add div and style --->
                     <cfoutput>Please select a book from the list to edit</cfoutput>
                </cfif>
           </div>
