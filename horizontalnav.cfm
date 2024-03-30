@@ -27,6 +27,7 @@
                </li>
           </ul>
 
+          <!--- Move cfoutput to above div --->
           <cfoutput>
                <form class="d-flex" action="#cgi.script_name#?p=details" method="post">
                     <input class="form-control me-2" type="search" name="searchme" placeholder="Search" aria-label="Search">
