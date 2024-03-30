@@ -35,6 +35,7 @@
                 <section id="center" class="col-sm-9 order-last">
                     <cfinclude template = "#p#.cfm"/>
                 </section>
+                
                 <section id="left" class="col-sm-3 order-first">
                     <cfinclude template = "genrenav.cfm"/>
                </section>
