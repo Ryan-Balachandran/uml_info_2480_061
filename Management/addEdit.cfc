@@ -121,7 +121,7 @@ component {
           }
           else {
                var qs = new query(datasource = application.dsource);
-               qs.setSql('Select * FROM Book_Information WHERE Title LIKE :qterm order by Title');
+               qs.setSql('Select * FROM Book_Information WHERE Title LIKE :qterm ORDER BY Title');
 
                qs.addparam(
                     name  = 'qterm', 
@@ -147,7 +147,7 @@ component {
 
      function allPublishers(isbn13) {
           var qs = new query(datasource = application.dsource);
-          qs.setSql('Select * FROM publishers order by name');
+          qs.setSql('Select * FROM publishers ORDER BY name');
           return qs.execute().getResult(); 
      }
 
@@ -158,7 +158,7 @@ component {
 
      function allGenres() {
           var qs = new query(datasource = application.dsource);
-          qs.setSql('Select * FROM Genre order by genreName');
+          qs.setSql('Select * FROM Genre ORDER BY genreName');
           return qs.execute().getResult(); 
      }
 
@@ -203,4 +203,14 @@ component {
 
           return qs.execute().getResult(); 
      }
+
+     // function bookGenres(book) {
+     //      var qs = new query(datasource = application.dsource);
+     //      qs.setSql('SELECT * FROM genresToBooks
+     //             INNER JOIN genres ON genresToBooks.genreid = genres.genreid
+     //             WHERE genresToBooks.isbn13 = :isbn13
+     //             ORDER by genreName');
+     //      qs.addParam(name = 'isbn13', value = arguments.book);
+     //      return qs.execute().getResult();
+     //  }
 }
