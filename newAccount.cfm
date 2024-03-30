@@ -50,7 +50,7 @@
           </div>
 
           <div>
-               <button type="button" id="newAccountButton" class="btn btn-warning" onclick="validateNewAccount()">Make New Account</button>     
+               <button type="button" id="newAccountButton" class="btn btn-warning" onclick="validateNewAccount()" style="width: 100%">Make New Account</button>     
                <input type="submit" id="submitNewAccountForm" style="display: none"/>   
           </div>  
      </form>
