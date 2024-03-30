@@ -1,8 +1,17 @@
-<cfparam name = "searchme" default = "">
+<cfparam name = "searchme" default = ""/>
+<cfparam name = "genre" default = ""/>
+
+<cfset bookInfo = bookstoreFunctions.obtainSearchResults(searchme, genre)/>
 
 <cfoutput>
-     <cfset bookInfo = bookstoreFunctions.obtainSearchResults(searchme)/>
-
+     <div>
+          <h3>
+               <cfoutput>
+                    #bookStoreFunctions.resultsHeader(searchme, genre)#
+               </cfoutput>
+          </h3>
+     </div>
+     
      <cfif bookInfo.recordcount == 0>
           #noResults()#
      <cfelseif bookInfo.recordcount == 1>
@@ -13,13 +22,13 @@
 </cfoutput>
 
 
-<cffunction name="noResults">
+<cffunction name = "noResults">
      <div style="font-size: 2em;">
           There were no results to be found. Please try again.
      </div>
 </cffunction>
 
-<cffunction name="oneResult">
+<cffunction name = "oneResult">
      <cfoutput>
           <div style="color: green; font-size: 2em;">
                Search Results:
@@ -44,7 +53,7 @@
      </cfoutput>
 </cffunction>
 
-<cffunction name="manyResults">
+<cffunction name = "manyResults">
      <div style="font-size: 2em;">
           There were more than one result, here is the list.
      </div>
