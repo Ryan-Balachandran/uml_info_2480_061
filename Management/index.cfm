@@ -18,8 +18,10 @@
           <div class = "container" style="padding-top: 10px;">
                <div id = "navarea">
                     <cfoutput>
+                         <!--- Move to a management page? --->
                          <a href = "../index.cfm">Home</a> |
                          <a href = "#cgi.script_name#/?tool=addEdit">Book Inventory</a> |
+                         <a href = "#cgi.script_name#/?tool=content">Content</a> |
                          <!--- <a href = "#cgi.script_name#/?tool=addGenre">Add Genres</a> | --->
                          <!--- <a href = "#cgi.script_name#/?tool=addPublishers">Add Publishers</a> | --->
                          <a href = "#cgi.script_name#/?tool=createuuids">Create UUIDs</a>
