@@ -192,25 +192,31 @@ component {
           qs.execute();
      }
 
-     function bookGenres(isbn13) {
+     // function bookGenres(isbn13) {
+     //      var qs = new query(datasource = application.dsource);
+     //      qs.setSql('Select * FROM genresToBooks WHERE ISBN13 = :isbn13');
+
+     //      qs.addparam(
+     //           name  = 'isbn13',
+     //           value = arguments.isbn13
+     //      );
+
+     //      return qs.execute().getResult(); 
+     // }
+
+     function bookGenres(book) {
           var qs = new query(datasource = application.dsource);
-          qs.setSql('Select * FROM genresToBooks WHERE ISBN13 = :isbn13');
+          qs.setSql('Select * FROM genresToBooks 
+               INNER JOIN Genre ON genresToBooks.genreID = Genre.genreID 
+               WHERE genresToBooks.ISBN13 = :isbn13
+               ORDER BY genreName
+          ');
 
           qs.addparam(
                name  = 'isbn13',
-               value = arguments.isbn13
+               value = arguments.book
           );
 
           return qs.execute().getResult(); 
      }
-
-     // function bookGenres(book) {
-     //      var qs = new query(datasource = application.dsource);
-     //      qs.setSql('SELECT * FROM genresToBooks
-     //             INNER JOIN genres ON genresToBooks.genreid = genres.genreid
-     //             WHERE genresToBooks.isbn13 = :isbn13
-     //             ORDER by genreName');
-     //      qs.addParam(name = 'isbn13', value = arguments.book);
-     //      return qs.execute().getResult();
-     //  }
 }
