@@ -28,7 +28,7 @@
 </cftry>
 
 
-<cffunction name="mainForm">
+<cffunction name = "mainForm">
      <cfset thisBookDetails = addEditFunctions.bookDetails(book)/>
      <cfset allPublishers = addEditFunctions.allPublishers()/>
      <cfset allGenres = addEditFunctions.allGenres()/>
@@ -137,7 +137,7 @@
 </cffunction>
 
 
-<cffunction name="sideNav">
+<cffunction name = "sideNav">
      <cfset allbooks = addEditFunctions.sideNavBooks(qterm)/>
 
      <div style="padding-top: 10px;">
@@ -166,7 +166,7 @@
      </cfoutput>
 </cffunction>
 
-<cffunction name="findBookForm">
+<cffunction name = "findBookForm">
      <cfoutput>
           <form action="#cgi.script_name#?tool=#tool#" method="post">
                <div class="form-floating mb-3">
