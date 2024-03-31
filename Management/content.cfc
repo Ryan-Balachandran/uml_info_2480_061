@@ -38,7 +38,7 @@ component {
                );
 
                qs.addParam(
-                    name  = 'descriptiom', 
+                    name  = 'description', 
                     // cfsqltype = 'CF_SQL_NVARCHAR', 
                     value = formData.description
                );
