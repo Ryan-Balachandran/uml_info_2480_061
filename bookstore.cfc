@@ -46,7 +46,7 @@ component {
           var qs = new query(datasource = application.dsource);
           qs.setSql("Select DISTINCT Genre.genreID, genreName FROM GenresToBooks 
                INNER JOIN Genre ON Genre.genreID = GenresToBooks.genreID 
-               ORDER BY Genre.genreName;
+               ORDER BY genreName;
           ");
 
           return qs.execute().getResult();
