@@ -10,8 +10,9 @@
                <cfif book neq "">
                     <cfoutput>#mainForm()#</cfoutput>
                <cfelse>
-                    <!--- Add div and style --->
-                    <cfoutput>Please select a book from the list to edit</cfoutput>
+                    <div style="font-size: 1.3em;"><br/>
+                         <p>Please select a book from the list to edit</p>
+                    </div>
                </cfif>
           </div>
 
@@ -115,8 +116,8 @@
                     </script>
                </div>
 
-               <div>
-                    <h3>Genres</h3>
+               <h3>Genres</h3>
+               <div class="form-floating mb-3">
                     <cfloop query="allGenres">
                          <div class="form-check mb3">
                               <input class="form-check-input" id="genre#genreID#" type="checkbox" name="genre" value="#genreID#"/>
