@@ -8,27 +8,27 @@
           <span class="navbar-toggler-icon"></span>
      </button>
 
-     <!--- CFOUTPUT when putting link to nav elements--->
      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-               <li class="nav-item active">
-                    <a class="nav-link" href="index.cfm">Home<span class="sr-only">(current)</span></a>
-               </li>
+          <cfoutput>
+               <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                         <a class="nav-link" href="index.cfm">Home<span class="sr-only">(current)</span></a>
+                    </li>
+     
+                    <li class="nav-item">
+                         <a class="nav-link" href="#cgi.scriptName#?p=content&id=B0ECB3CA-CACA-4CFB-90A31BFA98364DED">Store Information</a>
+                    </li>
+     
+                    <li class="nav-item">
+                         <a class="nav-link" href="#cgi.scriptName#?p=content&id=CDCE983E-7A40-43C4-866697ECE39F12F0">Highlighted Favorites</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                         <a class="nav-link" href="#cgi.scriptName#?p=content&id=68F23A10-A20A-4441-B1116AA526833CED">Events</a>
+                    </li>
+               </ul>
+          </cfoutput>
 
-               <li class="nav-item">
-                    <a class="nav-link" href="#">Store Information</a>
-               </li>
-
-               <li class="nav-item">
-                    <a class="nav-link" href="#">Highlighted Favorites</a>
-               </li>
-               
-               <li class="nav-item">
-                    <a class="nav-link" href="#">Events</a>
-               </li>
-          </ul>
-
-          <!--- Move cfoutput to above div --->
           <cfoutput>
                <form class="d-flex" action="#cgi.script_name#?p=details" method="post">
                     <input class="form-control me-2" type="search" name="searchme" placeholder="Search" aria-label="Search">
