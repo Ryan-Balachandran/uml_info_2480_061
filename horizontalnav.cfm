@@ -8,10 +8,11 @@
           <span class="navbar-toggler-icon"></span>
      </button>
 
+     <!--- CFOUTPUT when putting link to nav elements--->
      <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
                <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="index.cfm">Home<span class="sr-only">(current)</span></a>
                </li>
 
                <li class="nav-item">
@@ -33,9 +34,7 @@
                     <input class="form-control me-2" type="search" name="searchme" placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-success" type="submit">Search</button>
                </form>
-          </cfoutput>
 
-          <cfoutput>
                <cfif session.user.isLoggedIn>
                     <ul class="navbar-nav mr-auto">
                          <li class="nav-item">
