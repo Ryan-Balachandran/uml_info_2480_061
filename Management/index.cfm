@@ -18,13 +18,31 @@
           <div class = "container" style="padding-top: 10px;">
                <div id = "navarea">
                     <cfoutput>
-                         <!--- Move to a management page? --->
-                         <a href = "../index.cfm">Home</a> |
-                         <a href = "#cgi.script_name#/?tool=addEdit">Book Inventory</a> |
-                         <a href = "#cgi.script_name#/?tool=content">Content</a> |
-                         <!--- <a href = "#cgi.script_name#/?tool=addGenre">Add Genres</a> | --->
-                         <!--- <a href = "#cgi.script_name#/?tool=addPublishers">Add Publishers</a> | --->
-                         <a href = "#cgi.script_name#/?tool=createuuids">Create UUIDs</a>
+                         <ul class="nav">
+                              <li class="nav-item">
+                                   <a class="nav-link" href = "../index.cfm">Home</a> 
+                              </li>
+     
+                              <li class="nav-item">
+                                   <a class="nav-link" href = "#cgi.script_name#/?tool=addEdit">Book Inventory</a> 
+                              </li>
+     
+                              <li class="nav-item">
+                                   <a class="nav-link" href = "#cgi.script_name#/?tool=content">Content</a> 
+                              </li>
+
+                              <!--- <li class="nav-item">
+                                   <a class="nav-link" href = "#cgi.script_name#/?tool=addGenre">Add Genres</a> 
+                              </li> --->
+
+                              <!--- <li class="nav-item">
+                                   <a class="nav-link" href = "#cgi.script_name#/?tool=addPublishers">Add Publishers</a> 
+                              </li> --->
+                              
+                              <li class="nav-item">
+                                   <a class="nav-link" href = "#cgi.script_name#/?tool=createuuids">Create UUIDs</a>
+                              </li>
+                         </ul>
                     </cfoutput>
                </div>
 
