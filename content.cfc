@@ -10,7 +10,7 @@ component {
           var qs = new query(datasource = application.dsource);
 
           qs.setSql('IF NOT EXISTS (SELECT * FROM Content WHERE contentID = :id)
-          INSERT INTO Content (Title, Description, dataWritten) 
+          INSERT INTO Content (Title, Description, dateWritten) 
                VALUES (:title, :description, :dateWritten);
           UPDATE Content SET
                Title = :title,
@@ -37,7 +37,7 @@ component {
           );
 
           qs.addParam(
-               name  = 'dataWritten', 
+               name  = 'dateWritten', 
                value = dateformat(now(), "yyyy-mm-dd")
           );
           qs.execute();
